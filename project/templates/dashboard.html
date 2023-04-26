@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <style>
+        td{
+            border: 1px solid;
+            padding: 5px;
+        }
+    </style>
+    <button onclick="{location.href = '/newPassword'}">Add New</button>
+    <a href="{% url 'logout' %}">Logout</a>
+    <table>
+        {% for i in entries %}
+        <tr>
+            <td><a href="{{i.website}}" target="_blank">{{i.website}}</a></td>
+            <td>{{i.username}}</td>
+            <td>{{i.password}}</td>
+            
+            <td><button onclick="{location.href = '/update/{{i.id}}'}">Update</button></td>
+            <td><button onclick="{location.href = '/del/{{i.id}}'}">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
